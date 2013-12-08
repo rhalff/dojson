@@ -27,13 +27,15 @@ function Up(up, json) {
 
 function DoJSON() {
 
+  var ok = function(key, json) { return json[key]; };
+
   this.process = {
-    string: function() {},
-    boolean: function() {},
-    object: function() {},
-    number: function() {},
-    'null': function() {},
-    array: function() {}
+    string: ok,
+    boolean: ok,
+    object: ok,
+    number: ok,
+    'null': ok,
+    array: ok
   };
 
   /**
@@ -59,10 +61,8 @@ DoJSON.prototype.parse = function(json, process) {
 
     if(type === 'function') {
 
-      // same function for each type
-      for(key in this.process) {
-         this.process[key] = type;
-      }
+      // only pass objects
+      this.process['object'] = process;
 
     } else {
 
@@ -95,7 +95,6 @@ DoJSON.prototype._process = function(json, up) {
       match(/[A-Z]\w+/g, '').
       pop().
       toLowerCase();
-
     if(type === 'object') {
 
       u = new Up(up, json);
@@ -142,15 +141,4 @@ DoJSON.prototype._process = function(json, up) {
 
 }
 
-var user = JSON.parse(fs.readFileSync('user.json').toString());
-
-var j = new DoJSON();
-var res = j.parse(user, {
-//  string: function(key, json) { return json[key]; },
-//  boolean: function(key, json) { return true; }
-  object: function(key, json) {
-    if(this.up.up && this.up.up.up && this.up.up.up) {
-      console.log(this.up);
-    }
-  }
-});
+module.exports = DoJSON;
