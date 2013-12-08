@@ -1,0 +1,51 @@
+{
+  "name": "dojson",
+  "description": "Do JSON",
+  "version": "0.1.0",
+  "homepage": "https://github.com/rhalff/dojson",
+  "user": "Rob Halff",
+  "domain": "robberthalff.com",
+  "main": "server.js",
+  "browser": "client.js",
+  "license": "MIT",
+  "author": {
+    "name": "Rob Halff",
+    "email": "rob.halff@gmail.com",
+    "url": "http://www.robberthalff.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rhalff/dojson.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rhalff/dojson/issues"
+  },
+  "keywords": [
+    "dom",
+    "pointer",
+    "template"
+  ],
+  "engines": {
+    "node": "0.x.x"
+  },
+  "maintainers": [
+    {
+      "name": "Rob Halff",
+      "email": "rob.halff@gmail.com",
+      "web": "http://www.robberthalff.com"
+    }
+  ],
+  "devDependencies": {
+    "mocha": "1.x.x",
+    "should": "1.x.x",
+    "grunt": "0.x.x",
+    "grunt-release": "0.x.x",
+    "grunt-contrib-jshint": "0.x.x",
+    "grunt-contrib-watch": "0.x.x",
+    "grunt-jsdoc": "0.x.x",
+    "grunt-shell": "0.x.x"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}

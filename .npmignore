@@ -1,0 +1,11 @@
+.*
+*.ts
+ATTIC
+doc
+dev.sh
+Gruntfile.js
+logs
+node_modules
+references
+test*
+TODO
