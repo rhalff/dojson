@@ -5,8 +5,7 @@
   "homepage": "https://github.com/rhalff/dojson",
   "user": "Rob Halff",
   "domain": "robberthalff.com",
-  "main": "server.js",
-  "browser": "client.js",
+  "main": "main.js",
   "license": "MIT",
   "author": {
     "name": "Rob Halff",
