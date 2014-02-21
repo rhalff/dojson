@@ -19,9 +19,30 @@
  * If you only specify a string function you
  * will get an object with only string values.
  *
+ * This seems to work a lot like JSON.parse(.., [revive])
+ * It works a bit different but almost the same.
+ * Besides that JSON.parse expects a string (too bad)
+ *
+ * Also there is a difference where DoJSON remembers it's
+ * parents. so the callback can search both ways,
+ * by using this.up.up.up etc. Forward search is natural
+ *
+ * Maybe .up could be changed to the actual key names.
+ *
+ * this.parentKey.thatParentskey etc.
+ *
+ * Downside, you have to know the parent. but this is good
+ * actually. what callback wants to act on something unknown anyway.
+ *
+ * forward is:
+ * val.key.deeper.key.
+ *
+ * because when a value is an object, the forward is
+ * in the value itself.
+ *
  */
-function Up(up, json) {
-  this.up =  up;
+function Up(key, up, json) {
+  this[key] =  up;
   this.json = json;
 }
 
@@ -79,7 +100,7 @@ DoJSON.prototype.parse = function(json, process) {
 
   this.json = json;
 
-  json = this._process(json, new Up());
+  json = this._process(json, new Up('root'));
   return json;
 
 };
@@ -97,7 +118,7 @@ DoJSON.prototype._process = function(json, up) {
       toLowerCase();
     if(type === 'object') {
 
-      u = new Up(up, json);
+      u = new Up(key, up, json);
 
       // objects should be manipulated in place,
       // if you return false from the object function

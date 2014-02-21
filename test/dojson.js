@@ -18,6 +18,7 @@ describe("Do JSON:", function() {
 
       if(key === 'ports') {
          result[key] = json;
+         console.log('KEY:'+ key, '>>', this);
       }
 
       return json[key];
@@ -26,7 +27,6 @@ describe("Do JSON:", function() {
 
     res = j.parse(node);
 
-    console.log(res);
     console.log(result);
 
   });
